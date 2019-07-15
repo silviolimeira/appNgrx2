@@ -1,0 +1,20 @@
+
+$ npm uninstall -g cordova ionic
+$ npm install -g codova ionic
+
+$ ionic start myAPp blank
+
+$ ionic cordova plugin add cordova-plugin-app-update
+$ npm install @ionic-native/app-update
+
+npm i @ngrx/store --save
+npm i @ngrx/effects --save
+npm i @ngrx/entity --save
+npm i @ngrx/router-store --save
+npm i @ngrx/store-devtools --save
+npm i @ngrx/schematics --save
+
+Items Feature
+
+Define state
+src/app/reducers/items.ts. It extends from EntityState in @ngrx/entity.
