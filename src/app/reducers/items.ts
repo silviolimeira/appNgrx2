@@ -1,6 +1,5 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 import { Item } from "../models/item";
-import { ReducerManager } from "@ngrx/store";
 import { ItemActions, ItemActionTypes } from "../actions/items";
 
 export interface State extends EntityState<Item> {

@@ -4,7 +4,6 @@
 // Actions must have a property type to specify their types
 
 import { Action } from "@ngrx/store";
-import { Item } from "../models/item";
 
 export enum ItemActionTypes {
   Load = "[Items] Load",
