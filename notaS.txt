@@ -18,3 +18,8 @@ Items Feature
 
 Define state
 src/app/reducers/items.ts. It extends from EntityState in @ngrx/entity.
+
+Create Actions
+$ mkdir -p src/app/actions
+$ touch src/app/actions/items.ts
+
