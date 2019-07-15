@@ -28,3 +28,13 @@ Create reducers
 create reducers. For each action defined, the reducer function
 needs to have login to handle it.
 
+Add effects
+    The actual login of loading items is implemented in the effect.
+$ mkdir -p src/app/effects/
+$ touch src/app/effects/items.ts
+
+$ npm install angularfire2 firebase --save
+ref: https://medium.com/letsboot/lets-learn-how-to-install-and-setup-angularfire2-4-0-135d72bb0a41
+
+With the effect loadItems$, the action Load triggers actions LoadSucess or LoadFial
+NOte: It's convention for variables of Observables to use $ as the name suffix
