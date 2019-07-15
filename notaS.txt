@@ -23,3 +23,8 @@ Create Actions
 $ mkdir -p src/app/actions
 $ touch src/app/actions/items.ts
 
+Create reducers
+    After defining the state and actions, we can
+create reducers. For each action defined, the reducer function
+needs to have login to handle it.
+

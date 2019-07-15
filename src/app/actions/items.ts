@@ -18,7 +18,7 @@ export class Load implements Action {
 }
 
 export class LoadSucess implements Action {
-  readonly type = ItemActionTypes.LoadFail;
+  readonly type = ItemActionTypes.LoadSuccess;
   constructor(public payload: any) {}
 }
 
