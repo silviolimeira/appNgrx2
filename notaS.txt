@@ -48,3 +48,7 @@ Create the State,
     $ ionic g module modules/topStories
     $ ionic g interface modules/top-stories/reducer/topStories
 
+Create Actions,
+    $ ionic g class modules/top-stories/action/topStories
+
+    
