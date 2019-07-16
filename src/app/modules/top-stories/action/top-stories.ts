@@ -12,17 +12,19 @@ export class Refresh implements Action {
 }
 
 export class LoadMore implements Action {
-  readonly type = TopStoriesActionTypes.LoadSuccess;
+  readonly type = TopStoriesActionTypes.LoadMore;
 }
 
 export class LoadSuccess implements Action {
   readonly type = TopStoriesActionTypes.LoadSuccess;
+
   constructor(public payload: number[]) {}
 }
 
 export class LoadFail implements Action {
   readonly type = TopStoriesActionTypes.LoadFail;
+
   constructor(public payload: any) {}
 }
 
-export type TopStoriesAction = Refresh | LoadMore | LoadSuccess | LoadFail;
+export type TopStoriesActions = Refresh | LoadMore | LoadSuccess | LoadFail;

@@ -46,9 +46,11 @@ Top Stories Feature
 Create the State, 
     The State is similar to the state for items
     $ ionic g module modules/topStories
-    $ ionic g interface modules/top-stories/reducer/topStories
+    $ ionic g class modules/top-stories/reducer/topStories
 
-Create Actions,
+Create Action,
     $ ionic g class modules/top-stories/action/topStories
 
-    
+Create Reducer
+    $ ionic g class modules/top-stories/reducer/topStories
+    note: already created when state created
