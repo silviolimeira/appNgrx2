@@ -54,3 +54,8 @@ Create Action,
 Create Reducer
     $ ionic g class modules/top-stories/reducer/topStories
     note: already created when state created
+
+    Pagination
+        create State and reducer function for Pagination
+
+        $ ionic g class modules/top-stories/reducer/pagination
