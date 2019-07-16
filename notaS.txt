@@ -38,3 +38,13 @@ ref: https://medium.com/letsboot/lets-learn-how-to-install-and-setup-angularfire
 
 With the effect loadItems$, the action Load triggers actions LoadSucess or LoadFial
 NOte: It's convention for variables of Observables to use $ as the name suffix
+
+========
+
+Top Stories Feature
+
+Create the State, 
+    The State is similar to the state for items
+    $ ionic g module modules/topStories
+    $ ionic g interface modules/top-stories/reducer/topStories
+

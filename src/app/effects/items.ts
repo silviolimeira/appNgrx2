@@ -22,7 +22,8 @@ export class ItemsEffects {
       combineLatest(
         ids.map(id =>
           this.db
-            .object("/v0/item" + id)
+            // .object("/v0/item" + id)
+            .object("/Students/" + id)
             .valueChanges()
             .pipe(take(1))
         )

@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { ItemsEffects } from "../effects/items";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: "app-home",
+  templateUrl: "home.page.html",
+  styleUrls: ["home.page.scss"]
 })
 export class HomePage {
-
-  constructor() {}
-
+  constructor(itemsEffects: ItemsEffects) {
+    console.log(itemsEffects);
+  }
 }
