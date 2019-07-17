@@ -22,3 +22,6 @@ export const reducers: ActionReducerMap<TopStoriesState> = {
   stories: fromTopStories.reducer,
   pagination: fromPagination.reducer
 };
+
+//Selectors for components
+

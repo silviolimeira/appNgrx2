@@ -43,6 +43,7 @@ export function reducer(
   }
 }
 
+//Selectors of top stories
 export const getIds = (state: State) => state.ids;
 
 export const getLoading = (state: State) => state.loading;
