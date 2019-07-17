@@ -73,3 +73,19 @@ reducers to compose the state for a module.
 
 $ ionic g class modules/top-stories/reducer/index
 
+Selectors
+    After finishing the states, actions and reducers, we
+need to update the components to interact with the
+store. Components get data from the store for the view
+and may dispatch actions to the store. A component is
+usually interested in a subset of the global state. We use
+the selectors provided by NgRx to select states from the
+store. Selectors are functions that define how to extract
+data from the state. Selectors can be chained together
+to reuse the selection logic. One important
+characteristic of selector functions is that they
+memorize results to avoid unnecessary computations.
+Selector functions are tipically defined in the same file
+as the #REDUCER# functions.
+
+
