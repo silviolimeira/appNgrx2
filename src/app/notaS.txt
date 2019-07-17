@@ -59,3 +59,8 @@ Create Reducer
         create State and reducer function for Pagination
 
         $ ionic g class modules/top-stories/reducer/pagination
+
+Create effects
+    The last piece is the effect to load ids of top stories.
+    
+    $ ionic g class modules/top-stories/effect/topStories
