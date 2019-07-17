@@ -12,10 +12,10 @@ import {
   withLatestFrom
 } from "rxjs/operators";
 import { AngularFireDatabase } from "@angular/fire/database";
-import * as fromTopStories from "../reducer";
+import * as fromTopStories from "../reducer/top-stories";
 import { pageSize } from "../reducer/pagination";
-import * as itemActions from "../actions/items";
-import * as topStoriesActions from "../actions/top-stories";
+import * as itemActions from "../../../actions/items";
+import * as topStoriesActions from "../action/top-stories";
 
 @Injectable()
 export class TopStories {
@@ -57,6 +57,4 @@ export class TopStories {
       return new itemActions.Load(ids.slice(offset, offset + limit));
     })
   );
-
-  
 }
