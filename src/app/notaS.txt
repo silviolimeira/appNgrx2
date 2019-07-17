@@ -64,3 +64,12 @@ Create effects
     The last piece is the effect to load ids of top stories.
     
     $ ionic g class modules/top-stories/effect/topStories
+
+*** The reducer functions only
+deal with a subset of global state. The global state is
+a hierarchical composition of states at different levels.
+It's common to have the file index.ts in directory
+reducers to compose the state for a module.
+
+$ ionic g class modules/top-stories/reducer/index
+
