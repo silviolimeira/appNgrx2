@@ -88,4 +88,16 @@ memorize results to avoid unnecessary computations.
 Selector functions are tipically defined in the same file
 as the #REDUCER# functions.
 
+Update Components
+    Create module components
+
+    $ ionic g module components
+
+Create component topStories
+    $ ionic g component components/topStories
+
+Create model items
+    $ ionic g class models/items
+    
+
 
