@@ -1,7 +1,7 @@
 import {
   TopStoriesActions,
   TopStoriesActionTypes
-} from "../action/top-stories";
+} from "../actions/top-stories";
 
 export interface State {
   ids: number[];

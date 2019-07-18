@@ -8,8 +8,11 @@ import { from, Observable, Subscription } from "rxjs";
 import { select, Store } from "@ngrx/store";
 import { Items } from "../../models/items";
 import { LoadingController, ToastController } from "@ionic/angular";
+
 import * as fromTopStories from "../../modules/top-stories/reducer";
-import * as topStoriesActions from "../../modules/top-stories/action";
+import * as topStoriesActions from "../../modules/top-stories/actions/top-stories";
+import * as fromItems from "../../modules/top-stories/reducer";
+
 import { filter, concatMap } from "rxjs/operators";
 
 @Component({
@@ -23,7 +26,7 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
 
   private itemsLoading$: Observable<boolean>;
   private idsLoading$: Observable<boolean>;
-  private error$: Observable<any>;
+  private errors$: Observable<any>;
   private infiniteScrollComponent: any;
   private refresherComponent: any;
   private loading: HTMLIonLoadingElement;
@@ -35,12 +38,13 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
     private toastCtrl: ToastController
   ) {
     this.items$ = store.pipe(select(fromTopStories.getDisplayItems));
-    this.itemsLoading$ = store.pipe(select(fromTopStories.isItemsLoading));
+    this.itemsLoading$ = store.pipe(select(fromItems.isItemsLoading));
     this.idsLoading$ = store.pipe(select(fromTopStories.isTopStoriesLoading));
-    this.error$ = store.pipe(
+    this.errors$ = store.pipe(
       select(fromTopStories.getError),
       filter(error => error != null)
     );
+
     this.subscriptions = [];
   }
 
@@ -64,11 +68,6 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
         )
         .subscribe()
     );
-    this.subscriptions.push(
-      this.error$
-        .pipe(concatMap(error => from(this.showError(error))))
-        .subscribe()
-    );
     this.doLoad(true);
   }
 
@@ -88,7 +87,7 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
 
   doLoad(refresh: boolean) {
     if (refresh) {
-      this.store.dispatch(new topStoriesActions.refresh());
+      this.store.dispatch(new topStoriesActions.Refresh());
     } else {
       this.store.dispatch(new topStoriesActions.LoadMore());
     }

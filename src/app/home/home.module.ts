@@ -7,9 +7,11 @@ import { RouterModule } from "@angular/router";
 import { HomePage } from "./home.page";
 import { ItemsEffects } from "../effects/items";
 import { ActionsSubject } from "@ngrx/store";
+import { ComponentsModule } from "../components/components.module";
 
 @NgModule({
   imports: [
+    ComponentsModule,
     CommonModule,
     FormsModule,
     IonicModule,

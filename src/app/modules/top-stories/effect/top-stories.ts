@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { Action, Store } from "@ngrx/store";
 import { Actions, Effect, ofType } from "@ngrx/effects";
-import { TopStoriesActionTypes } from "../action/top-stories";
+import { TopStoriesActionTypes } from "../actions/top-stories";
 import {
   catchError,
   map,
@@ -15,7 +15,7 @@ import { AngularFireDatabase } from "@angular/fire/database";
 import * as fromTopStories from "../reducer/top-stories";
 import { pageSize } from "../reducer/pagination";
 import * as itemActions from "../../../actions/items";
-import * as topStoriesActions from "../action/top-stories";
+import * as topStoriesActions from "../actions/top-stories";
 
 @Injectable()
 export class TopStories {

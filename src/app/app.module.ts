@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouteReuseStrategy } from "@angular/router";
 
@@ -13,17 +13,25 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { environment } from "../environments/environment";
+import { ComponentsModule } from "./components/components.module";
+import { StoreModule } from "@ngrx/store";
+
+import { reducer } from "./reducers/items";
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
+    ComponentsModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+
+    StoreModule.forRoot(reducer)
   ],
   providers: [
     StatusBar,
