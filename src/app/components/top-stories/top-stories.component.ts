@@ -14,6 +14,7 @@ import * as topStoriesActions from "../../modules/top-stories/actions/top-storie
 import * as fromItems from "../../modules/top-stories/reducer";
 
 import { filter, concatMap } from "rxjs/operators";
+import { TopStoriesEffects } from "src/app/modules/top-stories/effect/top-stories";
 
 @Component({
   selector: "app-top-stories",

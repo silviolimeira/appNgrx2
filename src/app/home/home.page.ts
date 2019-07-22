@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ItemsEffects } from "../effects/items";
+import { TopStoriesEffects } from "../modules/top-stories/effect/top-stories";
 
 @Component({
   selector: "app-home",
@@ -7,7 +7,5 @@ import { ItemsEffects } from "../effects/items";
   styleUrls: ["home.page.scss"]
 })
 export class HomePage {
-  constructor(itemsEffects: ItemsEffects) {
-    console.log(itemsEffects);
-  }
+  constructor() {}
 }

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { Action, Store } from "@ngrx/store";
 import { Actions, Effect, ofType } from "@ngrx/effects";
@@ -12,17 +12,19 @@ import {
   withLatestFrom
 } from "rxjs/operators";
 import { AngularFireDatabase } from "@angular/fire/database";
-import * as fromTopStories from "../reducer/top-stories";
+import * as fromTopStories from "../reducer";
 import { pageSize } from "../reducer/pagination";
 import * as itemActions from "../../../actions/items";
 import * as topStoriesActions from "../actions/top-stories";
 
+import { HACKER_NEWS_DB } from "../../../hackernews-db";
+
 @Injectable()
-export class TopStories {
+export class TopStoriesEffects {
   constructor(
-    private actions$,
+    private actions$: Actions,
     private store: Store<fromTopStories.State>,
-    private db: AngularFireDatabase
+    @Inject(HACKER_NEWS_DB) private db: AngularFireDatabase
   ) {}
 
   @Effect()

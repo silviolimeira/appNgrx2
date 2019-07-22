@@ -5,9 +5,9 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 
 import { HomePage } from "./home.page";
-import { ItemsEffects } from "../effects/items";
-import { ActionsSubject } from "@ngrx/store";
 import { ComponentsModule } from "../components/components.module";
+import { TopStoriesEffects } from "../modules/top-stories/effect/top-stories";
+import { TopStoriesComponent } from "../components/top-stories/top-stories.component";
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { ComponentsModule } from "../components/components.module";
       }
     ])
   ],
-  declarations: [HomePage],
-  providers: [ItemsEffects, ActionsSubject]
+  // providers: [TopStoriesEffects],
+  declarations: [HomePage]
 })
 export class HomePageModule {}

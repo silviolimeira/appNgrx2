@@ -7,4 +7,4 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class TopStoriesModule { }
+export class Modula1Module { }
