@@ -61,7 +61,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
       useFactory: (platformId: Object, zone: NgZone) =>
         new AngularFireDatabase(
           environment.firebase,
-          "HackerNews",
+          "notablenotes-b7bcb",
           null,
           platformId,
           zone

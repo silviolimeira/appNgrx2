@@ -13,7 +13,7 @@ export enum ItemActionTypes {
 
 export class Load implements Action {
   readonly type = ItemActionTypes.Load;
-  constructor(public payload: number[]) {}
+  constructor(public payload: any[]) {}
 }
 
 export class LoadSucess implements Action {

@@ -4,7 +4,7 @@ import { AngularFireDatabase } from "angularfire2/database";
 
 import { Effect, ofType } from "@ngrx/effects";
 import { Observable, combineLatest, of } from "rxjs";
-import { map, mergeMap, take, catchError } from "rxjs/operators";
+import { map, mergeMap, take, catchError, tap } from "rxjs/operators";
 import { ItemActionTypes, LoadSucess, LoadFail, Load } from "../actions/items";
 import { Item } from "../models/item";
 
@@ -18,12 +18,18 @@ export class ItemsEffects {
   @Effect() loadItems$: Observable<Action> = this.actions$.pipe(
     ofType(ItemActionTypes.Load),
     map((action: Load) => action.payload),
-    mergeMap((ids: number[]) =>
+    tap(res => {
+      console.log("res: ", res);
+    }),
+    tap(res => {
+      console.log("effect-res: ", res);
+    }),
+    mergeMap((ids: any[]) =>
       combineLatest(
         ids.map(id =>
           this.db
             // .object("/v0/item" + id)
-            .object("/Students/" + id)
+            .object("/infos/" + id)
             .valueChanges()
             .pipe(take(1))
         )

@@ -39,7 +39,7 @@ export function reducer(state = inititalState, action: ItemActions): State {
   }
 }
 // Selectors of the feature items
-export const getItemsState = createFeatureSelector<State>("items");
+export const getItemsState = createFeatureSelector<State>("infos");
 
 export const { selectEntities: getItemEntities } = adapter.getSelectors(
   getItemsState

@@ -9,7 +9,8 @@ import {
   mergeMap,
   switchMap,
   take,
-  withLatestFrom
+  withLatestFrom,
+  tap
 } from "rxjs/operators";
 import { AngularFireDatabase } from "@angular/fire/database";
 import * as fromTopStories from "../reducer";
@@ -25,18 +26,39 @@ export class TopStoriesEffects {
     private actions$: Actions,
     private store: Store<fromTopStories.State>,
     @Inject(HACKER_NEWS_DB) private db: AngularFireDatabase
-  ) {}
+  ) {
+    var data = this.db.list("/infos").snapshotChanges();
+    data.subscribe(data => {
+      var returnArr = [];
+      data.forEach(data => {
+        var item = data.payload.toJSON();
+        returnArr.push(item);
+      });
+      console.log("returnArr: ", returnArr);
+    });
+
+    this.db
+      .object("/infos/-LhAkCZR7_6XwHGQSVmZ")
+      .snapshotChanges()
+      .subscribe(data => {
+        console.log("data1: ", data);
+      });
+  }
 
   @Effect()
   loadTopStories$: Observable<Action> = this.actions$.pipe(
     ofType(TopStoriesActionTypes.Refresh),
     switchMap(() =>
       this.db
-        .list("/v0/topstories")
+        .list("/tops/") //"/v0/topstories")
         .valueChanges()
         .pipe(
+          tap(res => {
+            console.log("pageSize: ", pageSize);
+            console.log("loadTopStories: ", res);
+          }),
           take(1),
-          mergeMap((ids: number[]) =>
+          mergeMap((ids: any[]) =>
             of<Action>(
               new topStoriesActions.LoadSuccess(ids),
               new itemActions.Load(ids.slice(0, pageSize))

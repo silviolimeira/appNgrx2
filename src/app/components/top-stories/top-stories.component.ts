@@ -54,6 +54,7 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
       this.itemsLoading$.subscribe(loding => {
         if (!this.loading) {
           this.notifyScrollComplete();
+          console.log(this.items$);
         }
       })
     );
@@ -77,16 +78,19 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
   }
 
   load(event) {
+    console.log("load");
     this.infiniteScrollComponent = event.target;
     this.doLoad(false);
   }
 
   refresh(event) {
+    console.log("refresh");
     this.refresherComponent = event.target;
     this.doLoad(true);
   }
 
   doLoad(refresh: boolean) {
+    console.log("doLoad, refresh: ", refresh);
     if (refresh) {
       this.store.dispatch(new topStoriesActions.Refresh());
     } else {

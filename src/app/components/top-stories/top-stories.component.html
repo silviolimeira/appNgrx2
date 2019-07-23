@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Top Stories</ion-title>
     <ion-buttons slot="secondary">
-      <!-- <ion-button
+      <ion-button
         id="btnShowLogin"
         routerLink="/login"
         *ngIf="!(loggedIn$ | async)"
@@ -19,7 +19,7 @@
           <img slot="icon-only" [src]="getPhotoURL(user$ | async)" />
         </ion-avatar>
         Log out
-      </ion-button>-->
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -27,10 +27,11 @@
   <ion-refresher slot="fixed" [disabled]="false" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
-  <app-items [items]="items$ | async"
-    ><!-- (toShare)="share($event)" (toOpen)="openUrl($event)" --></app-items
-  >
+  <app-items
+    [items]="items$ | async"
+    (toOpen)="openUrl($event)"
+    (toShare)="share($event)"
+  ></app-items>
   <ion-infinite-scroll (ionInfinite)="load($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>

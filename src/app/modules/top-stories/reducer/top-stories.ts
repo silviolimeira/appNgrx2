@@ -4,7 +4,7 @@ import {
 } from "../actions/top-stories";
 
 export interface State {
-  ids: number[];
+  ids: any[];
   loading: boolean;
   error: any;
 }
@@ -43,7 +43,6 @@ export function reducer(
   }
 }
 
-//Selectors of top stories
 export const getIds = (state: State) => state.ids;
 
 export const getLoading = (state: State) => state.loading;

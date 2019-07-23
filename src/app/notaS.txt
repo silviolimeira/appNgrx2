@@ -98,6 +98,9 @@ Create component topStories
 
 Create model items
     $ ionic g class models/items
-    
+
+InAppBrowser Plugin:    
+$ ionic cordova plugin add cordova-plugin-inappbrowser --save
+$ npm install --save @ionic-native/in-app-browser 
 
 

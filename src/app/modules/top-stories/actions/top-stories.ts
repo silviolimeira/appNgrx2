@@ -18,7 +18,7 @@ export class LoadMore implements Action {
 export class LoadSuccess implements Action {
   readonly type = TopStoriesActionTypes.LoadSuccess;
 
-  constructor(public payload: number[]) {}
+  constructor(public payload: any[]) {}
 }
 
 export class LoadFail implements Action {
