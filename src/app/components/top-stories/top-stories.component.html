@@ -31,9 +31,8 @@
   <ion-grid>
     <ion-row>
       <h1>Items:)</h1>
-      {{ items$ }}
       <ul>
-        <li *ngFor="let item of items$ | async">"Item: " {{ item }}</li>
+        <li *ngFor="let item of itemsLoading$ | async">"Item: " {{ item }}</li>
       </ul>
     </ion-row>
   </ion-grid>
