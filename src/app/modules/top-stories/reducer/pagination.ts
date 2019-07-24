@@ -7,14 +7,17 @@ export interface State {
   offset: number;
   limit: number;
   total: number;
+  payload: any;
 }
 
 export const pageSize = 10;
+export const offset = 0;
 
 const initialState: State = {
   offset: 0,
   limit: pageSize,
-  total: 0
+  total: 0,
+  payload: []
 };
 
 export function reducer(
@@ -28,7 +31,12 @@ export function reducer(
       const offset = state.offset + state.limit;
       return { ...state, offset: offset < state.total ? offset : state.offset };
     case TopStoriesActionTypes.LoadSuccess:
-      return { ...state, total: action.payload.length };
+      console.log("TopStoriesActionTypes.LoadSuccess: ", action.payload);
+      return {
+        ...state,
+        payload: action.payload,
+        total: action.payload.length
+      };
     default:
       return state;
   }

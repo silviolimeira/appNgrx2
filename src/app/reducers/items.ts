@@ -21,9 +21,11 @@ export const inititalState: State = adapter.getInitialState({
 export function reducer(state = inititalState, action: ItemActions): State {
   switch (action.type) {
     case ItemActionTypes.Load: {
+      console.log("ItemActionTypes.Load: ", action.payload);
       return { ...state, loading: true };
     }
     case ItemActionTypes.LoadSuccess: {
+      console.log("ItemActionTypes.LoadSuccess: ", action.payload);
       return adapter.upsertMany(action.payload, {
         ...state,
         loading: false,
@@ -34,6 +36,7 @@ export function reducer(state = inititalState, action: ItemActions): State {
       return { ...state, loading: false, error: action.payload };
     }
     default: {
+      console.log("default: ", state);
       return state;
     }
   }

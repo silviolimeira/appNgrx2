@@ -13,12 +13,16 @@ export enum ItemActionTypes {
 
 export class Load implements Action {
   readonly type = ItemActionTypes.Load;
-  constructor(public payload: any[]) {}
+  constructor(public payload: any[]) {
+    console.log("ItemAction Load wer payloyad**: ", payload);
+  }
 }
 
 export class LoadSucess implements Action {
   readonly type = ItemActionTypes.LoadSuccess;
-  constructor(public payload: any) {}
+  constructor(public payload: any) {
+    console.log("LoadSuccess: ", payload);
+  }
 }
 
 export class LoadFail implements Action {

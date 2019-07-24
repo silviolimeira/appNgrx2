@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Top Stories</ion-title>
+    <ion-title>Top Stories 1</ion-title>
     <ion-buttons slot="secondary">
       <ion-button
         id="btnShowLogin"
@@ -23,15 +23,25 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content padding>
   <ion-refresher slot="fixed" [disabled]="false" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <app-items
+
+  <ion-grid>
+    <ion-row>
+      <h1>Items:)</h1>
+      {{ items$ }}
+      <ul>
+        <li *ngFor="let item of items$ | async">"Item: " {{ item }}</li>
+      </ul>
+    </ion-row>
+  </ion-grid>
+  <!-- <app-items
     [items]="items$ | async"
     (toOpen)="openUrl($event)"
     (toShare)="share($event)"
-  ></app-items>
+  ></app-items> -->
   <ion-infinite-scroll (ionInfinite)="load($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>

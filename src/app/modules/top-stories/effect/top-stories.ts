@@ -14,7 +14,7 @@ import {
 } from "rxjs/operators";
 import { AngularFireDatabase } from "@angular/fire/database";
 import * as fromTopStories from "../reducer";
-import { pageSize } from "../reducer/pagination";
+import { pageSize, offset } from "../reducer/pagination";
 import * as itemActions from "../../../actions/items";
 import * as topStoriesActions from "../actions/top-stories";
 
@@ -54,6 +54,7 @@ export class TopStoriesEffects {
         .valueChanges()
         .pipe(
           tap(res => {
+            console.log("offset: ", offset);
             console.log("pageSize: ", pageSize);
             console.log("loadTopStories: ", res);
           }),

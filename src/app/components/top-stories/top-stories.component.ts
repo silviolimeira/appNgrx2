@@ -54,8 +54,8 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
       this.itemsLoading$.subscribe(loding => {
         if (!this.loading) {
           this.notifyScrollComplete();
-          console.log(this.items$);
         }
+        console.log("this.notifyScrollComplete():", this.items$);
       })
     );
 
@@ -71,6 +71,8 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
         .subscribe()
     );
     this.doLoad(true);
+    this.items$ = this.store.pipe(select(fromTopStories.getDisplayItems));
+    console.log("items$ as: ", this.items$);
   }
 
   ngOnDestroy(): void {
