@@ -45,21 +45,54 @@ export class TopStoriesEffects {
       });
   }
 
+  // @Effect()
+  // loadTopStories$: Observable<Action> = this.actions$.pipe(
+  //   ofType(TopStoriesActionTypes.Refresh),
+  //   switchMap(() =>
+  //     this.db
+  //       .list("/tops/") //"/v0/topstories")
+  //       .valueChanges()
+  //       .pipe(
+  //         tap(res => {
+  //           console.log("offset: ", offset);
+  //           console.log("pageSize: ", pageSize);
+  //           console.log("loadTopStories: ", res);
+  //         }),
+  //         take(1),
+  //         mergeMap((ids: any[]) =>
+  //           of<Action>(
+  //             new topStoriesActions.LoadSuccess(ids),
+  //             new itemActions.Load(ids.slice(0, pageSize))
+  //           )
+  //         ),
+  //         catchError(error => of(new topStoriesActions.LoadFail(error)))
+  //       )
+  //   )
+  // );
+
+  // @Effect()
+  // loadMore$: Observable<Action> = this.actions$.pipe(
+  //   ofType(TopStoriesActionTypes.LoadMore),
+  //   withLatestFrom(this.store),
+  //   map(([action, state]) => {
+  //     const {
+  //       pagination: { offset, limit },
+  //       stories: { ids }
+  //     } = state.topStories;
+  //     return new itemActions.Load(ids.slice(offset, offset + limit));
+  //   })
+  // );
+
   @Effect()
   loadTopStories$: Observable<Action> = this.actions$.pipe(
     ofType(TopStoriesActionTypes.Refresh),
     switchMap(() =>
       this.db
-        .list("/tops/") //"/v0/topstories")
+        .list("/tops")
         .valueChanges()
         .pipe(
-          tap(res => {
-            console.log("offset: ", offset);
-            console.log("pageSize: ", pageSize);
-            console.log("loadTopStories: ", res);
-          }),
           take(1),
-          mergeMap((ids: any[]) =>
+          mergeMap((ids: number[]) =>
             of<Action>(
               new topStoriesActions.LoadSuccess(ids),
               new itemActions.Load(ids.slice(0, pageSize))

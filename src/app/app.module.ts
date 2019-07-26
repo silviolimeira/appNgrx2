@@ -43,7 +43,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
 
@@ -60,7 +60,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
       provide: HACKER_NEWS_DB,
       useFactory: (platformId: Object, zone: NgZone) =>
         new AngularFireDatabase(
-          environment.firebase,
+          environment.firebaseConfig,
           "notablenotes-b7bcb",
           null,
           platformId,

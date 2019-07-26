@@ -44,16 +44,27 @@ export const getStoryIds = createSelector(
   fromTopStories.getIds
 );
 
+// export const getDisplayItems = createSelector(
+//   getStoryIds,
+//   getItemEntities,
+//   getPaginationState,
+//   (ids, entities, pagination) => {
+//     return {
+//       results: ids
+//         .slice(0, pagination.offset + pagination.limit)
+//         .map(id => entities[id])
+//     };
+//   }
+// );
+
 export const getDisplayItems = createSelector(
   getStoryIds,
   getItemEntities,
   getPaginationState,
   (ids, entities, pagination) => {
-    return {
-      results: ids
-        .slice(0, pagination.offset + pagination.limit)
-        .map(id => entities[id])
-    };
+    return ids
+      .slice(0, pagination.offset + pagination.limit)
+      .map(id => entities[id]);
   }
 );
 

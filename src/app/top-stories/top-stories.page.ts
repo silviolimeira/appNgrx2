@@ -6,12 +6,12 @@ import {
 } from "@angular/core";
 import { from, Observable, Subscription } from "rxjs";
 import { select, Store } from "@ngrx/store";
-import { Items } from "../../models/items";
+import { Items } from "../models/items";
 import { LoadingController, ToastController } from "@ionic/angular";
 
-import * as fromTopStories from "../../modules/top-stories/reducer";
-import * as topStoriesActions from "../../modules/top-stories/actions/top-stories";
-import * as fromItems from "../../modules/top-stories/reducer";
+import * as fromTopStories from "../modules/top-stories/reducer";
+import * as topStoriesActions from "../modules/top-stories/actions/top-stories";
+import * as fromItems from "../modules/top-stories/reducer";
 
 import { filter, concatMap } from "rxjs/operators";
 import { TopStoriesEffects } from "src/app/modules/top-stories/effect/top-stories";
@@ -23,8 +23,8 @@ export interface User {}
 @Component({
   selector: "app-top-stories",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: "./top-stories.component.html",
-  styleUrls: ["./top-stories.component.scss"]
+  templateUrl: "./top-stories.page.html",
+  styleUrls: ["./top-stories.page.scss"]
 })
 export class TopStoriesComponent implements OnInit, OnDestroy {
   items$: Observable<Items>;
