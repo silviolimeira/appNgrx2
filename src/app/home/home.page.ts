@@ -25,8 +25,7 @@ export interface User {}
   styleUrls: ["home.page.scss"]
 })
 export class HomePage implements OnInit, OnDestroy {
-  items$: any; //Observable<Items>;
-  items1$: Observable<Items>;
+  items$: Observable<Items>;
   private itemsLoading$: Observable<boolean>;
   private idsLoading$: Observable<boolean>;
   private errors$: Observable<any>;
@@ -97,7 +96,7 @@ export class HomePage implements OnInit, OnDestroy {
 
     this.subscriptions.push(
       this.items$.subscribe(res => {
-        console.log("subs items1$ 1133333: ", res);
+        console.log("subs items$ 1133333: ", res);
       })
     );
 

@@ -28,8 +28,11 @@ import { ItemsEffects } from "../effects/items";
       }
     ]),
     StoreModule.forFeature("tops", topStoriesReducer),
+    EffectsModule.forFeature([TopStoriesEffects]),
+
     StoreModule.forFeature("item", reducer),
-    EffectsModule.forFeature([TopStoriesEffects])
+    EffectsModule.forFeature([ItemsEffects])
+
     // EffectsModule.forFeature([ItemsEffects])
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -62,10 +62,13 @@ export const getDisplayItems = createSelector(
   getItemEntities,
   getPaginationState,
   (ids, entities, pagination) => {
+    ids = [1, 2];
     console.log("XXX: ", ids);
     console.log("pagination.offset: ", pagination.offset);
     console.log("pagination.limit: ", pagination.limit);
     console.log("entities: ", entities);
+    console.log("ids.slice: ", ids.slice(0, 10));
+    console.log("map: ", ids.map(id => console.log(id)));
     return ids
       .slice(0, pagination.offset + pagination.limit)
       .map(id => entities[id]);
