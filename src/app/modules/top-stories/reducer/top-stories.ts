@@ -4,7 +4,7 @@ import {
 } from "../actions/top-stories";
 
 export interface State {
-  ids: any[];
+  ids: number[];
   loading: boolean;
   error: any;
 }

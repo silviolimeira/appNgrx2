@@ -13,7 +13,7 @@ import * as fromTopStories from "../../modules/top-stories/reducer";
 import * as topStoriesActions from "../../modules/top-stories/actions/top-stories";
 import * as fromItems from "../../modules/top-stories/reducer";
 
-import { filter, concatMap } from "rxjs/operators";
+import { filter, concatMap, tap } from "rxjs/operators";
 import { TopStoriesEffects } from "src/app/modules/top-stories/effect/top-stories";
 import { ItemActionTypes } from "src/app/actions/items";
 import { Item } from "src/app/models/item";
@@ -46,6 +46,7 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
     private toastCtrl: ToastController
   ) {
     this.items$ = store.pipe(select(fromTopStories.getDisplayItems));
+
     this.itemsLoading$ = store.pipe(select(fromItems.isItemsLoading));
     this.idsLoading$ = store.pipe(select(fromTopStories.isTopStoriesLoading));
     this.errors$ = store.pipe(
@@ -81,6 +82,11 @@ export class TopStoriesComponent implements OnInit, OnDestroy {
         .pipe(concatMap(error => from(this.showError(error))))
         .subscribe()
     );
+    this.subscriptions
+      .push
+      // this.store.pipe(select('topStories'));
+      ();
+
     this.doLoad(true);
   }
 

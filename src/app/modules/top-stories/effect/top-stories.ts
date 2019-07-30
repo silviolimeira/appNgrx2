@@ -22,44 +22,39 @@ import { HACKER_NEWS_DB } from "../../../hackernews-db";
 
 @Injectable()
 export class TopStoriesEffects {
-  constructor(
-    private actions$: Actions,
-    private store: Store<fromTopStories.State>,
-    @Inject(HACKER_NEWS_DB) private db: AngularFireDatabase
-  ) {
-    var data = this.db.list("/infos").snapshotChanges();
-    data.subscribe(data => {
-      var returnArr = [];
-      data.forEach(data => {
-        var item = data.payload.toJSON();
-        returnArr.push(item);
-      });
-      console.log("returnArr: ", returnArr);
-    });
+  // constructor(
+  //   private actions$: Actions,
+  //   private store: Store<fromTopStories.State>,
+  //   @Inject(HACKER_NEWS_DB) private db: AngularFireDatabase
+  // ) {
+  //   var data = this.db.list("/item").snapshotChanges();
+  //   data.subscribe(data => {
+  //     var returnArr = [];
+  //     data.forEach(data => {
+  //       var item = data.payload.toJSON();
+  //       returnArr.push(item);
+  //     });
+  //     console.log("returnArr: ", returnArr);
+  //   });
 
-    this.db
-      .object("/infos/-LhAkCZR7_6XwHGQSVmZ")
-      .snapshotChanges()
-      .subscribe(data => {
-        console.log("data1: ", data);
-      });
-  }
+  //   this.db
+  //     .object("/item/-LhAkCZR7_6XwHGQSVmZ")
+  //     .snapshotChanges()
+  //     .subscribe(data => {
+  //       console.log("data1: ", data);
+  //     });
+  // }
 
   // @Effect()
   // loadTopStories$: Observable<Action> = this.actions$.pipe(
   //   ofType(TopStoriesActionTypes.Refresh),
   //   switchMap(() =>
   //     this.db
-  //       .list("/tops/") //"/v0/topstories")
+  //       .list("/tops")
   //       .valueChanges()
   //       .pipe(
-  //         tap(res => {
-  //           console.log("offset: ", offset);
-  //           console.log("pageSize: ", pageSize);
-  //           console.log("loadTopStories: ", res);
-  //         }),
   //         take(1),
-  //         mergeMap((ids: any[]) =>
+  //         mergeMap((ids: number[]) =>
   //           of<Action>(
   //             new topStoriesActions.LoadSuccess(ids),
   //             new itemActions.Load(ids.slice(0, pageSize))
@@ -82,6 +77,12 @@ export class TopStoriesEffects {
   //     return new itemActions.Load(ids.slice(offset, offset + limit));
   //   })
   // );
+
+  constructor(
+    private actions$: Actions,
+    private store: Store<fromTopStories.State>,
+    @Inject(HACKER_NEWS_DB) private db: AngularFireDatabase
+  ) {}
 
   @Effect()
   loadTopStories$: Observable<Action> = this.actions$.pipe(

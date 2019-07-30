@@ -22,7 +22,7 @@ import {
 } from "angularfire2/database";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { environment } from "../environments/environment";
-import { ComponentsModule } from "./components/components.module";
+// import { ComponentsModule } from "./components/components.module";
 import { StoreModule } from "@ngrx/store";
 
 import { reducer } from "./reducers/items";
@@ -39,7 +39,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
   entryComponents: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    ComponentsModule,
+    // ComponentsModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,

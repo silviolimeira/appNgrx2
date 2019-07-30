@@ -26,7 +26,7 @@ export const reducers: ActionReducerMap<TopStoriesState> = {
 
 //Selectors for components
 export const getTopStoriesState = createFeatureSelector<TopStoriesState>(
-  "topStories"
+  "tops"
 );
 
 export const getPaginationState = createSelector(
@@ -62,6 +62,10 @@ export const getDisplayItems = createSelector(
   getItemEntities,
   getPaginationState,
   (ids, entities, pagination) => {
+    console.log("XXX: ", ids);
+    console.log("pagination.offset: ", pagination.offset);
+    console.log("pagination.limit: ", pagination.limit);
+    console.log("entities: ", entities);
     return ids
       .slice(0, pagination.offset + pagination.limit)
       .map(id => entities[id]);

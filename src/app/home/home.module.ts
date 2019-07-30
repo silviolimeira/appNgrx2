@@ -1,17 +1,23 @@
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { IonicModule } from "@ionic/angular";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 
 import { HomePage } from "./home.page";
-import { ComponentsModule } from "../components/components.module";
+// import { ComponentsModule } from "../components/components.module";
 import { TopStoriesEffects } from "../modules/top-stories/effect/top-stories";
 import { TopStoriesComponent } from "../components/top-stories/top-stories.component";
+import { StoreModule } from "@ngrx/store";
+
+import { reducers as topStoriesReducer } from "../modules/top-stories/reducer";
+import { reducer } from "../reducers/items";
+import { EffectsModule } from "@ngrx/effects";
+import { ItemsEffects } from "../effects/items";
 
 @NgModule({
   imports: [
-    ComponentsModule,
+    // ComponentsModule,
     CommonModule,
     FormsModule,
     IonicModule,
@@ -20,8 +26,13 @@ import { TopStoriesComponent } from "../components/top-stories/top-stories.compo
         path: "",
         component: HomePage
       }
-    ])
+    ]),
+    StoreModule.forFeature("tops", topStoriesReducer),
+    StoreModule.forFeature("item", reducer),
+    EffectsModule.forFeature([TopStoriesEffects])
+    // EffectsModule.forFeature([ItemsEffects])
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   // providers: [TopStoriesEffects],
   declarations: [HomePage]
 })
