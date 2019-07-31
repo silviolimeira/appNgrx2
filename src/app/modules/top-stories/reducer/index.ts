@@ -62,7 +62,7 @@ export const getDisplayItems = createSelector(
   getItemEntities,
   getPaginationState,
   (ids, entities, pagination) => {
-    ids = [1, 2];
+    ids = [1, 2]; // todo: id of top must be the same of item id
     console.log("XXX: ", ids);
     console.log("pagination.offset: ", pagination.offset);
     console.log("pagination.limit: ", pagination.limit);
