@@ -6,16 +6,13 @@ import { StoreModule } from "@ngrx/store";
 import { TopStoriesEffects } from "../modules/top-stories/effect/top-stories";
 import { EffectsModule } from "@ngrx/effects";
 import { TopStoriesComponent } from "./top-stories/top-stories.component";
+import { ItemsComponent } from "./items/items.component";
+import { ItemComponent } from "./item/item.component";
 
 @NgModule({
-  declarations: [TopStoriesComponent],
+  declarations: [ItemsComponent, ItemComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [
-    CommonModule,
-    StoreModule.forFeature("topStories", topStoriesReducer),
-
-    EffectsModule.forFeature([TopStoriesEffects])
-  ],
-  exports: [TopStoriesComponent]
+  imports: [CommonModule],
+  exports: [ItemsComponent, ItemComponent]
 })
 export class ComponentsModule {}

@@ -67,8 +67,16 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-grid>
-    <ion-row *ngFor="let item of items$ | async">
+    <!-- <ion-row *ngFor="let item of items$ | async">
       <div>{{ item.id }} {{ item.text }}</div>
+    </ion-row> -->
+    <ion-row>
+      <app-items
+        [items]="items$ | async"
+        (toOpen)="openUrl($event)"
+        (toShare)="share($event)"
+        >AppItems</app-items
+      >
     </ion-row>
     <ion-row>
       <ion-button (click)="showItems()">Items</ion-button>

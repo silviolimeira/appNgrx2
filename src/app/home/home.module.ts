@@ -14,10 +14,11 @@ import { reducers as topStoriesReducer } from "../modules/top-stories/reducer";
 import { reducer } from "../reducers/items";
 import { EffectsModule } from "@ngrx/effects";
 import { ItemsEffects } from "../effects/items";
+import { ComponentsModule } from "../components/components.module";
 
 @NgModule({
   imports: [
-    // ComponentsModule,
+    ComponentsModule,
     CommonModule,
     FormsModule,
     IonicModule,
